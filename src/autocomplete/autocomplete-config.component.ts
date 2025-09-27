@@ -11,6 +11,7 @@ import {
 import {AutoComplete} from 'primeng/autocomplete';
 import {getComponentBindings} from '../component-bindings.util';
 import {FormsModule} from '@angular/forms';
+import {MatAutocomplete} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-autocomplete-config',
@@ -29,9 +30,14 @@ export class AutocompleteConfigComponent implements AfterViewInit, OnChanges {
 
   ngAfterViewInit() {
     // create the component after view is ready
-    this.bindings = getComponentBindings(AutoComplete);
+
+   // this.bindings = getComponentBindings(AutoComplete);
+    this.bindings = getComponentBindings(MatAutocomplete);
+
+    console.log(getComponentBindings(MatAutocomplete));
+
     this.container.clear();
-    this.componentRef = this.container.createComponent(AutoComplete);
+    this.componentRef = this.container.createComponent(MatAutocomplete);
 
     this.applyBindings(); // initial binding
   }
