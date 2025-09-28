@@ -11,49 +11,17 @@ import {AutocompleteConfigComponent} from '../ui-library-adapter/components/auto
   imports: [ButtonModule,AutocompleteConfigComponent, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-<!--    <app-autocomplete-->
-<!--      [options]="filteredSearchOption"-->
-<!--      [value]="selectedValue"-->
-<!--      (onSelectionChange)="onSelect($event)"-->
-<!--      (onSearchInputChange)="onSearchInputChanged($event)">-->
-<!--    </app-autocomplete>-->
-
-<!--        <app-autocomplete-->
-<!--          [minlength]="2"-->
-<!--          [readonly]="true"-->
-<!--          [suggestions]="options"-->
-<!--          [field]="'name'"-->
-<!--          [dropdown]="true"-->
-<!--          (onSelect)="onSelect($event)"-->
-<!--          (onClear)="onClear()"-->
-<!--          (completeMethod)="search($event)"-->
-<!--        >-->
-<!--        </app-autocomplete>-->
-
-
-<!--<app-autocomplete-config-->
-<!--  [config]="{-->
-<!--        suggestions: options,-->
-<!--        minLength: 2-->
-<!--      }"-->
-<!--  [events]="{-->
-<!--        onSelect: onSelect,-->
-<!--        completeMethod: search-->
-<!--      }"-->
-<!--&gt;-->
-<!--</app-autocomplete-config>-->
-
-<app-autocomplete-config
-  [config]="{
+    <app-autocomplete-config
+      [config]="{
         suggestions: options,
         minLength: 2
       }"
-  [events]="{
+      [events]="{
         onSelect: onSelect.bind(this),
         completeMethod: search.bind(this)
       }"
->
-</app-autocomplete-config>
+    >
+    </app-autocomplete-config>
   `
 })
 
