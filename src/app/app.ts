@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {Autocomplete} from '../autocomplete/autocomplete';
-import {AutocompleteComponent} from '../autocomplete/autocomplete.component';
-import { AutocompleteConfigComponent } from '../autocomplete/autocomplete-config.component';
+import {AutocompleteConfigComponent} from '../ui-library-adapter/components/autocomplete/autocomplete-config.component';
+
 
 
 @Component({
@@ -43,6 +42,18 @@ import { AutocompleteConfigComponent } from '../autocomplete/autocomplete-config
 <!--      }"-->
 <!--&gt;-->
 <!--</app-autocomplete-config>-->
+
+<app-autocomplete-config
+  [config]="{
+        suggestions: options,
+        minLength: 2
+      }"
+  [events]="{
+        onSelect: onSelect.bind(this),
+        completeMethod: search.bind(this)
+      }"
+>
+</app-autocomplete-config>
   `
 })
 

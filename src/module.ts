@@ -1,6 +1,7 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AutocompleteConfigComponent} from './autocomplete/autocomplete-config.component';
+import {AutocompleteConfigComponent} from './ui-library-adapter/components/autocomplete/autocomplete-config.component';
+
 
 
 @NgModule({

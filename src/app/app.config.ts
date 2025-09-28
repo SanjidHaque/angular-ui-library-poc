@@ -21,6 +21,6 @@ export const appConfig: ApplicationConfig = {
       }
     }),
     provideNoopAnimations(),
-    provideUiLibrary('primeng') // or 'angular-material'
+    provideUiLibrary('angular-material') // or 'angular-material'
   ]
 };
