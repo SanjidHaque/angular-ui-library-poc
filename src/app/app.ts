@@ -32,17 +32,17 @@ import { AutocompleteConfigComponent } from '../autocomplete/autocomplete-config
 <!--        </app-autocomplete>-->
 
 
-<app-autocomplete-config
-  [config]="{
-        suggestions: options,
-        minLength: 2
-      }"
-  [events]="{
-        onSelect: onSelect,
-        completeMethod: search
-      }"
->
-</app-autocomplete-config>
+<!--<app-autocomplete-config-->
+<!--  [config]="{-->
+<!--        suggestions: options,-->
+<!--        minLength: 2-->
+<!--      }"-->
+<!--  [events]="{-->
+<!--        onSelect: onSelect,-->
+<!--        completeMethod: search-->
+<!--      }"-->
+<!--&gt;-->
+<!--</app-autocomplete-config>-->
   `
 })
 
