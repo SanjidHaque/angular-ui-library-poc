@@ -11,46 +11,34 @@ import {AutocompleteConfigComponent} from '../ui-library-adapter/components/auto
   imports: [ButtonModule,AutocompleteConfigComponent, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
+<!--    <app-autocomplete-config-->
+<!--      [config]="{-->
+<!--        suggestions: options,-->
+<!--        minLength: 2-->
+<!--      }"-->
+<!--      [events]="{-->
+<!--        onSelect: search.bind(this),-->
+<!--        completeMethod: search.bind(this)-->
+<!--      }"-->
+<!--    >-->
+<!--    </app-autocomplete-config>-->
+
+
     <app-autocomplete-config
       [config]="{
-        suggestions: options,
-        minLength: 2
-      }"
+         panelWidth: '10px'
+        }"
       [events]="{
-        onSelect: onSelect.bind(this),
-        completeMethod: search.bind(this)
-      }"
+          optionSelected: search.bind(this),
+          opened: opened.bind(this)
+        }"
     >
     </app-autocomplete-config>
+
   `
 })
 
 export class App {
-  // filteredSearchOption: any[] = [];
-  //
-  // searchOptions = [
-  //   { value: 1, label: 'Option 1' },
-  //   { value: 2, label: 'Option 2' }
-  // ];
-  //
-  // selectedValue: any;
-  //
-  // onSelect(value: any) {
-  //   console.log(value);
-  // }
-  //
-  // onSearchInputChanged(value: any) {
-  //   console.log(value);
-  //   this.filteredSearchOption = this._filter(value);
-  // }
-  //
-  // private _filter(value: any) {
-  //   const filterValue = value.toLowerCase();
-  //   return this.searchOptions.filter(option => option.label.toLowerCase()?.includes(filterValue));
-  // }
-
-
-  selectedValue: any;
   filteredOptions: any[] = [];
 
   options = [
@@ -60,18 +48,15 @@ export class App {
 
   search(event: any) {
     console.log(event);
+    return
     const query = event.query.toLowerCase();
     this.filteredOptions = this.options.filter(opt =>
       opt.label.toLowerCase().includes(query)
     );
   }
 
-  onSelect(event: any) {
-    console.log('Selected:', event);
-  }
-
-  onClear() {
-    console.log('Cleared');
+  opened() {
+    console.log('opened');
   }
 
 }

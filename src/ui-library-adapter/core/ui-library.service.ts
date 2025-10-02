@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { UI_LIBRARY, UiLibrary } from './ui-library.token';
-import { PRIMENG_COMPONENTS } from '../ui-libraries/primeng/primeng.registry';
-import { MATERIAL_COMPONENTS } from '../ui-libraries/angular-material/material.registry';
+import { PRIMENG_COMPONENTS } from '../ui-libraries/primeng/primeng-autocomplete.factory';
+import { MATERIAL_COMPONENTS } from '../ui-libraries/angular-material/material-autocomplete.factory';
 import { Type } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
