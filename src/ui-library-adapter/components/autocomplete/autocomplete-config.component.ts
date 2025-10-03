@@ -45,15 +45,18 @@ export class AutocompleteConfigComponent implements AfterViewInit, OnChanges {
 
   private applyBindings() {
     let target = this.componentRef.instance;
+    const componentClass = this.componentRef.componentType;
+    const wrapperConfig = (componentClass as any).wrapperConfig;
 
-    // If wrapper exposes a MatAutocomplete child
-    if ((target as any).auto) {
+    if (wrapperConfig) {
       const wrapper = target;
-      target = (target as any).auto;
+      target = (target as any)[wrapperConfig.targetProperty];
 
-      // Apply special-case dynamic props like options
-      if (this.config.options) {
-        (wrapper as any).options = this.config.options;
+      // Apply passthrough properties to wrapper
+      for (const prop of wrapperConfig.passthroughProps) {
+        if (this.config[prop] !== undefined) {
+          (wrapper as any)[prop] = this.config[prop];
+        }
       }
     }
 

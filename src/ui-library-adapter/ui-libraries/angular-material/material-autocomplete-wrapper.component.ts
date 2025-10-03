@@ -30,7 +30,13 @@ import { MatOptionModule } from '@angular/material/core';
   `
 })
 export class MaterialAutocompleteWrapper {
+  // Expose what component this wraps
   static readonly wrappedComponent = MatAutocomplete;
+  static readonly wrapperConfig = {
+    targetProperty: 'auto',  // Property that exposes the wrapped component
+    passthroughProps: ['options']  // Props that go to wrapper, not target
+  };
+
   control = new FormControl('');
   options: any[] = [];
   @ViewChild('auto', { static: true }) auto!: MatAutocomplete;
