@@ -18,11 +18,11 @@ import { MatOptionModule } from '@angular/material/core';
   ],
   template: `
     <mat-form-field>
-      <input matInput [formControl]="control" [matAutocomplete]="auto">
+      <input matInput [formControl]="getActiveControl()" [matAutocomplete]="auto">
 
       <mat-autocomplete #auto="matAutocomplete">
         @for (option of options; track option) {
-          <mat-option [value]="option">{{ option?.['label'] }}</mat-option>
+          <mat-option [value]="option">{{ option }}</mat-option>
         }
       </mat-autocomplete>
 
@@ -33,11 +33,17 @@ export class MaterialAutocompleteWrapper {
   // Expose what component this wraps
   static readonly wrappedComponent = MatAutocomplete;
   static readonly wrapperConfig = {
-    targetProperty: 'auto',  // Property that exposes the wrapped component
-    passthroughProps: ['options']  // Props that go to wrapper, not target
+    targetProperty: 'auto',
+    passthroughProps: ['options', 'control']
   };
 
-  control = new FormControl('');
+  private defaultControl = new FormControl('');
+  control?: FormControl; // This will be set from parent via config
   options: any[] = [];
   @ViewChild('auto', { static: true }) auto!: MatAutocomplete;
+
+
+  getActiveControl(): FormControl {
+    return this.control || this.defaultControl;
+  }
 }
