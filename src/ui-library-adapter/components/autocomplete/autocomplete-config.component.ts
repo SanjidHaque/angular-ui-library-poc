@@ -13,7 +13,7 @@ import { getComponentBindings } from '../../core/component-bindings.util';
 @Component({
   selector: 'app-autocomplete-config',
   standalone: true,
-  templateUrl: './autocomplete-config.component.html',
+  template: `<ng-template #container></ng-template>`,
 })
 export class AutocompleteConfigComponent implements AfterViewInit, OnChanges {
   @Input() config: any = {};
@@ -44,16 +44,29 @@ export class AutocompleteConfigComponent implements AfterViewInit, OnChanges {
   }
 
   private applyBindings() {
-    // Inputs
-    for (const input of this.bindings.inputs) {
-      if (this.config[input] !== undefined) {
-        (this.componentRef.instance as any)[input] = this.config[input];
+    let target = this.componentRef.instance;
+
+    // If wrapper exposes a MatAutocomplete child
+    if ((target as any).auto) {
+      const wrapper = target;
+      target = (target as any).auto;
+
+      // Apply special-case dynamic props like options
+      if (this.config.options) {
+        (wrapper as any).options = this.config.options;
       }
     }
 
-    // Outputs
+    // Bind dynamic inputs
+    for (const input of this.bindings.inputs) {
+      if (this.config[input] !== undefined) {
+        (target as any)[input] = this.config[input];
+      }
+    }
+
+    // Bind dynamic outputs
     for (const output of this.bindings.outputs) {
-      const emitter = (this.componentRef.instance as any)[output];
+      const emitter = (target as any)[output];
       if (emitter?.subscribe && this.events[output]) {
         emitter.subscribe((e: any) => this.events[output](e));
       }

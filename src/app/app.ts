@@ -11,6 +11,8 @@ import {AutocompleteConfigComponent} from '../ui-library-adapter/components/auto
   imports: [ButtonModule,AutocompleteConfigComponent, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
+<!--    For Primeng use this element-->
+
 <!--    <app-autocomplete-config-->
 <!--      [config]="{-->
 <!--        suggestions: options,-->
@@ -24,9 +26,11 @@ import {AutocompleteConfigComponent} from '../ui-library-adapter/components/auto
 <!--    </app-autocomplete-config>-->
 
 
+<!--    For Angular-Material use this element-->
     <app-autocomplete-config
       [config]="{
-         panelWidth: '10px'
+         panelWidth: '100px',
+         options: options
         }"
       [events]="{
           optionSelected: search.bind(this),
@@ -34,7 +38,6 @@ import {AutocompleteConfigComponent} from '../ui-library-adapter/components/auto
         }"
     >
     </app-autocomplete-config>
-
   `
 })
 
@@ -48,11 +51,6 @@ export class App {
 
   search(event: any) {
     console.log(event);
-    return
-    const query = event.query.toLowerCase();
-    this.filteredOptions = this.options.filter(opt =>
-      opt.label.toLowerCase().includes(query)
-    );
   }
 
   opened() {
