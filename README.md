@@ -67,7 +67,8 @@ provideUiLibrary('angular-material')
 
 ### Component Usage
 
-The same component works with both libraries:
+The same component works with both libraries with respective input/output bindings. Example with Angular Material
+
 
 ```html
 <app-autocomplete-config
