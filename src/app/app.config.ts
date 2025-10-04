@@ -18,6 +18,6 @@ export const appConfig: ApplicationConfig = {
       }
     }),
     provideNoopAnimations(),
-    provideUiLibrary('primeng') //angular-material or primeng
+    provideUiLibrary('angular-material') //angular-material or primeng
   ]
 };
